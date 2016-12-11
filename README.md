@@ -2,6 +2,7 @@ imgproc Package
 ==========================
 
 GoLang package that provides simple image processing functions.
+Use: `go get github.com/kelvins/imgproc`
 
 Functions:
 
@@ -45,4 +46,4 @@ if err != nil {
 }
 ```
 
-**Note**: this package uses the github.com/disintegration/imaging package to resize the image
+**Note**: this package uses the `github.com/disintegration/imaging` package to resize the image
