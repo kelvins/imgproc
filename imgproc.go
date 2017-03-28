@@ -18,7 +18,7 @@ func IsGrayscale(img image.Image) (bool) {
     bounds := img.Bounds()
     w, h := bounds.Max.X, bounds.Max.Y
 
-    if w == 0 && h == 0 {
+    if w == 0 || h == 0 {
         return false
     }
 
