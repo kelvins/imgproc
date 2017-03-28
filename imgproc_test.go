@@ -98,7 +98,19 @@ func TestResizeImage(t *testing.T) {
         t.Error("Wrong bounds")
     }
 
-    imgResize, err := imgproc.ResizeImage(img, 0, 0)
+    imgResize, err := imgproc.ResizeImage(img, 100, 0)
+
+    if err == nil {
+        t.Error("Error during the resize image")
+    }
+
+    imgResize, err = imgproc.ResizeImage(img, 0, 100)
+
+    if err == nil {
+        t.Error("Error during the resize image")
+    }
+
+    imgResize, err = imgproc.ResizeImage(img, 0, 0)
 
     if err == nil {
         t.Error("Error during the resize image")
