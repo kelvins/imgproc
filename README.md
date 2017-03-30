@@ -1,6 +1,9 @@
 imgproc Package
 ==========================
 
+[![Build Status](https://circleci.com/gh/kelvins/imgproc.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/kelvins/imgproc)
+
+
 GoLang package that provides simple image processing functions.
 Use: `go get github.com/kelvins/imgproc`
 
