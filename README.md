@@ -8,6 +8,7 @@ GoLang package that provides simple image processing functions.
 Use: `go get github.com/kelvins/imgproc`
 
 Functions:
+----
 
 - [X] IsGrayscale
 - [X] ToGrayscale
@@ -17,6 +18,7 @@ Functions:
 - [X] LoadImage
 
 Example:
+----
 
 ``` go
 import (
