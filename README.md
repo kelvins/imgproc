@@ -16,6 +16,7 @@ Functions:
 - [X] ResizeImage
 - [X] SaveImage
 - [X] LoadImage
+- [X] LoadMultipleImages
 
 Example:
 ----
