@@ -111,6 +111,35 @@ func LoadImage(filePath string) (image.Image, error) {
       return img, nil
 }
 
+// Load multiple images based on a slice of image paths
+func LoadMultipleImages(paths []string) ([]image.Image, error) {
+
+  // If the paths slice is empty
+  if len(paths) == 0 {
+    return nil, errors.New("The slice is empty")
+  }
+
+  // Slice that will store the images loaded
+  var images []image.Image
+
+  // For each image path tries to load the image
+  for index := 0; index < len(paths); index++ {
+    // Try to load the image
+    image, err := LoadImage(paths[index])
+
+    // If something went wrong return an error
+    if err != nil {
+      return nil, err
+    }
+
+    // Append the image loaded to the images slice
+    images = append(images, image)
+  }
+
+  // Return the images slice
+  return images, nil
+}
+
 // Resize the image based on the parameters (maximum size 10.000x10.000)
 func ResizeImage(img image.Image, width int, height int) (image.Image, error) {
     if width == 0 || width > 10000 {
