@@ -10,7 +10,7 @@ func TestLoadImage(t *testing.T) {
 	_, err := LoadImage("123")
 
 	if err == nil {
-		t.Error(err)
+		t.Error("Expected an error. The path is invalid.")
 	}
 
 	// Try to load an valid image
@@ -66,7 +66,7 @@ func TestSaveImage(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-
+  
 	err = SaveImage(img, "./face.png")
 
 	if err != nil {
