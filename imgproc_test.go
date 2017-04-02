@@ -1,21 +1,20 @@
-package imgproc_test
+package imgproc
 
 import (
-	"github.com/kelvins/imgproc"
 	"testing"
 )
 
 // Test the load image function
 func TestLoadImage(t *testing.T) {
 	// Try to load an invalid image
-	_, err := imgproc.LoadImage("123")
+	_, err := LoadImage("123")
 
 	if err == nil {
 		t.Error(err)
 	}
 
 	// Try to load an valid image
-	_, err = imgproc.LoadImage("./face.png")
+	_, err = LoadImage("./face.png")
 
 	if err != nil {
 		t.Error(err)
@@ -27,7 +26,7 @@ func TestLoadMultipleImages(t *testing.T) {
 	var paths []string
 
 	// Paths empty
-	_, err := imgproc.LoadMultipleImages(paths)
+	_, err := LoadMultipleImages(paths)
 
 	if err == nil {
 		t.Error("Expected an error. The paths slice is empty.")
@@ -35,7 +34,7 @@ func TestLoadMultipleImages(t *testing.T) {
 
 	// Invalid path
 	paths = append(paths, "123.txt")
-	images, err := imgproc.LoadMultipleImages(paths)
+	images, err := LoadMultipleImages(paths)
 
 	if images != nil {
 		t.Error("Expected images == nil")
@@ -49,7 +48,7 @@ func TestLoadMultipleImages(t *testing.T) {
 	paths = append(paths, "./face.png")
 	paths = append(paths, "./face.png")
 
-	images, err = imgproc.LoadMultipleImages(paths)
+	images, err = LoadMultipleImages(paths)
 
 	if images == nil {
 		t.Error("Expected a valid images vector")
@@ -62,13 +61,13 @@ func TestLoadMultipleImages(t *testing.T) {
 // Test the SaveImage function
 func TestSaveImage(t *testing.T) {
 
-	img, err := imgproc.LoadImage("./face.png")
+	img, err := LoadImage("./face.png")
 
 	if err != nil {
 		t.Error(err)
 	}
 
-	err = imgproc.SaveImage(img, "./face.png")
+	err = SaveImage(img, "./face.png")
 
 	if err != nil {
 		t.Error(err)
@@ -78,19 +77,19 @@ func TestSaveImage(t *testing.T) {
 // Test the grayscale function
 func TestGrayscale(t *testing.T) {
 
-	img, err := imgproc.LoadImage("./face.png")
+	img, err := LoadImage("./face.png")
 
 	if err != nil {
 		t.Error(err)
 	}
 
-	if imgproc.IsGrayscale(img) {
+	if IsGrayscale(img) {
 		t.Error("Image is grayscale")
 	}
 
-	newImage := imgproc.ToGrayscale(img)
+	newImage := ToGrayscale(img)
 
-	if !imgproc.IsGrayscale(newImage) {
+	if !IsGrayscale(newImage) {
 		t.Error("Image is not grayscale")
 	}
 }
@@ -98,13 +97,13 @@ func TestGrayscale(t *testing.T) {
 // Test the ConvertImageToVector function
 func TestConvertImageToVector(t *testing.T) {
 
-	img, err := imgproc.LoadImage("./face.png")
+	img, err := LoadImage("./face.png")
 
 	if err != nil {
 		t.Error(err)
 	}
 
-	imageSlice := imgproc.ConvertImageToVector(img)
+	imageSlice := ConvertImageToVector(img)
 
 	expectedImageSlice := [6]uint8{163, 163, 162, 160, 157, 157}
 
@@ -121,7 +120,7 @@ func TestConvertImageToVector(t *testing.T) {
 
 // Test the resize image function
 func TestResizeImage(t *testing.T) {
-	img, err := imgproc.LoadImage("./face.png")
+	img, err := LoadImage("./face.png")
 
 	if err != nil {
 		t.Error(err)
@@ -134,31 +133,31 @@ func TestResizeImage(t *testing.T) {
 		t.Error("Wrong bounds")
 	}
 
-	imgResize, err := imgproc.ResizeImage(img, 100, 0)
+	imgResize, err := ResizeImage(img, 100, 0)
 
 	if err == nil {
 		t.Error("Error during the resize image")
 	}
 
-	imgResize, err = imgproc.ResizeImage(img, 0, 100)
+	imgResize, err = ResizeImage(img, 0, 100)
 
 	if err == nil {
 		t.Error("Error during the resize image")
 	}
 
-	imgResize, err = imgproc.ResizeImage(img, 0, 0)
+	imgResize, err = ResizeImage(img, 0, 0)
 
 	if err == nil {
 		t.Error("Error during the resize image")
 	}
 
-	imgResize, err = imgproc.ResizeImage(img, 9999999, 9999999)
+	imgResize, err = ResizeImage(img, 9999999, 9999999)
 
 	if err == nil {
 		t.Error("Error during the resize image")
 	}
 
-	imgResize, err = imgproc.ResizeImage(img, 100, 100)
+	imgResize, err = ResizeImage(img, 100, 100)
 
 	b = imgResize.Bounds()
 	w, h = b.Max.X, b.Max.Y
@@ -167,7 +166,7 @@ func TestResizeImage(t *testing.T) {
 		t.Error("Wrong bounds")
 	}
 
-	imgResize, err = imgproc.ResizeImage(img, 10, 10)
+	imgResize, err = ResizeImage(img, 10, 10)
 
 	b = imgResize.Bounds()
 	w, h = b.Max.X, b.Max.Y
