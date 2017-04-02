@@ -23,6 +23,43 @@ func TestLoadImage(t *testing.T) {
     }
 }
 
+// Test the load multiple images function
+func TestLoadMultipleImages(t *testing.T) {
+  var paths []string
+
+  // Paths empty
+  _, err := imgproc.LoadMultipleImages(paths)
+
+  if err == nil {
+      t.Error("Expected an error. The paths slice is empty.")
+  }
+
+  // Invalid path
+  paths = append(paths, "123.txt")
+  images, err := imgproc.LoadMultipleImages(paths)
+
+  if images != nil {
+      t.Error("Expected images == nil")
+  }
+  if err == nil {
+      t.Error("Expected an error. The path is invalid.")
+  }
+
+  // Valid paths
+  paths = nil
+  paths = append(paths, "./face.png")
+  paths = append(paths, "./face.png")
+
+  images, err = imgproc.LoadMultipleImages(paths)
+
+  if images == nil {
+      t.Error("Expected a valid images vector")
+  }
+  if err != nil {
+      t.Error("Expected no error.")
+  }
+}
+
 // Test the SaveImage function
 func TestSaveImage(t *testing.T) {
 
