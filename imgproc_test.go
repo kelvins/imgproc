@@ -66,7 +66,7 @@ func TestSaveImage(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-  
+
 	err = SaveImage(img, "./face.png")
 
 	if err != nil {
@@ -166,7 +166,7 @@ func TestResizeImage(t *testing.T) {
 		t.Error("Wrong bounds")
 	}
 
-	imgResize, err = ResizeImage(img, 10, 10)
+	imgResize, _ = ResizeImage(img, 10, 10)
 
 	b = imgResize.Bounds()
 	w, h = b.Max.X, b.Max.Y

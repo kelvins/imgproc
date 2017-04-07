@@ -1,3 +1,4 @@
+// imgproc package that provides some simple and useful image processing functions.
 package imgproc
 
 import (
@@ -11,7 +12,7 @@ import (
 	"os"
 )
 
-// Check if an image is in grayscale
+// IsGrayscale: check if an image is in grayscale.
 func IsGrayscale(img image.Image) bool {
 	// Gets the width and height of the image
 	bounds := img.Bounds()
@@ -34,7 +35,7 @@ func IsGrayscale(img image.Image) bool {
 	return true
 }
 
-// Convert an image to grayscale
+// ToGrayscale: convert an image to grayscale.
 func ToGrayscale(img image.Image) image.Image {
 	// Get the image bounds
 	bounds := img.Bounds()
@@ -52,7 +53,7 @@ func ToGrayscale(img image.Image) image.Image {
 	return gray
 }
 
-// Save an image (Image) to an image file
+// SaveImage: save an image (Image) to an image file.
 func SaveImage(img image.Image, filePath string) error {
 	// Creates the file based on the file path
 	out, err := os.Create(filePath)
@@ -67,7 +68,7 @@ func SaveImage(img image.Image, filePath string) error {
 	return nil
 }
 
-// Convert the image to grayscale and then convert it to a integer slice
+// ConvertImageToVector: convert the image to grayscale and then convert it to a integer slice.
 func ConvertImageToVector(img image.Image) []uint8 {
 
 	var imageSlice []uint8
@@ -88,7 +89,7 @@ func ConvertImageToVector(img image.Image) []uint8 {
 	return imageSlice
 }
 
-// Load an image file based on the file path
+// LoadImage: load an image file based on the file path.
 func LoadImage(filePath string) (image.Image, error) {
 	// Open the file image
 	fImage, err := os.Open(filePath)
@@ -110,7 +111,7 @@ func LoadImage(filePath string) (image.Image, error) {
 	return img, nil
 }
 
-// Load multiple images based on a slice of image paths
+// LoadMultipleImages: load multiple images based on a slice of image paths.
 func LoadMultipleImages(paths []string) ([]image.Image, error) {
 
 	// If the paths slice is empty
@@ -139,7 +140,7 @@ func LoadMultipleImages(paths []string) ([]image.Image, error) {
 	return images, nil
 }
 
-// Resize the image based on the parameters (maximum size 10.000x10.000)
+// ResizeImage: resize the image based on the parameters (maximum size 10.000x10.000).
 func ResizeImage(img image.Image, width int, height int) (image.Image, error) {
 	if width == 0 || width > 10000 {
 		return nil, errors.New("Invalid width")
