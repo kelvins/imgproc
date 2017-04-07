@@ -157,7 +157,7 @@ func TestResizeImage(t *testing.T) {
 		t.Error("Error during the resize image")
 	}
 
-	imgResize, err = ResizeImage(img, 100, 100)
+	imgResize, _ = ResizeImage(img, 100, 100)
 
 	b = imgResize.Bounds()
 	w, h = b.Max.X, b.Max.Y
