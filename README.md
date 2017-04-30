@@ -1,11 +1,14 @@
-imgproc Package
+imgproc
 ==========================
 
 [![Build Status](https://circleci.com/gh/kelvins/imgproc.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/kelvins/imgproc)
 
 
 GoLang package that provides simple image processing functions.
-Use: `go get github.com/kelvins/imgproc`
+
+Use:
+
+`go get github.com/kelvins/imgproc`
 
 Functions:
 ----
@@ -52,4 +55,10 @@ if err != nil {
 }
 ```
 
-**Note**: this package uses the `github.com/disintegration/imaging` package to resize the image
+Dependency:
+----
+
+It uses the `imaging` package to resize the image.
+
+`github.com/disintegration/imaging`
+
