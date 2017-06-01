@@ -94,8 +94,8 @@ func TestGrayscale(t *testing.T) {
 	}
 }
 
-// Test the ConvertImageToVector function
-func TestConvertImageToVector(t *testing.T) {
+// Test the ConvertImageToSlice function
+func TestConvertImageToSlice(t *testing.T) {
 
 	img, err := LoadImage("./face.png")
 
@@ -103,7 +103,7 @@ func TestConvertImageToVector(t *testing.T) {
 		t.Error(err)
 	}
 
-	imageSlice := ConvertImageToVector(img)
+	imageSlice := ConvertImageToSlice(img)
 
 	expectedImageSlice := [6]uint8{163, 163, 162, 160, 157, 157}
 

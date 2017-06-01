@@ -15,7 +15,7 @@ Functions:
 
 - [X] IsGrayscale
 - [X] ToGrayscale
-- [X] ConvertImageToVector
+- [X] ConvertImageToSlice
 - [X] ResizeImage
 - [X] SaveImage
 - [X] LoadImage
@@ -43,11 +43,13 @@ if err != nil {
     log.Fatal(err)
 }
 
-if !imgproc.IsGrayscale(grayscaleImage) {
-    fmt.Println("It is not grayscale")
+if imgproc.IsGrayscale(grayscaleImage) {
+    fmt.Println("It is a grayscale image")
+} else {
+    fmt.Println("It is not a grayscale image")
 }
 
-imageSlice := imgproc.ConvertImageToVector(grayscaleImage)
+imageSlice := imgproc.ConvertImageToSlice(grayscaleImage)
 
 resizedImage, err = imgproc.ResizeImage(grayscaleImage, 100, 100)
 if err != nil {
@@ -61,4 +63,3 @@ Dependency:
 It uses the `imaging` package to resize the image.
 
 `github.com/disintegration/imaging`
-

@@ -68,8 +68,8 @@ func SaveImage(img image.Image, filePath string) error {
 	return nil
 }
 
-// ConvertImageToVector : convert the image to grayscale and then convert it to a integer slice.
-func ConvertImageToVector(img image.Image) []uint8 {
+// ConvertImageToSlice : convert the image to grayscale and then convert it to a integer slice.
+func ConvertImageToSlice(img image.Image) []uint8 {
 
 	var imageSlice []uint8
 
